@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}CREATE{% endblock title %}
+
+
+{% block content %}
+
+<section class="container">
+    <div class="row mt-1">
+        <div class="col-sm-5 d-inline p-3 mb-2 bg-danger text-white offset-3 text-center ">
+            <h3>CRUD Operation</h3>
+        </div>
+    </div>
+    
+    </div>
+    <div class="row mt-1">
+        <div class="col-sm-5 d-inline  text-white offset-3 text-center ">
+            <table class="table table-striped" id="customers">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Sr.NO</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Roll</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Del|Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for d in data %}
+                  <tr>
+                    
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.roll }}</td>
+                    <td>{{ d.city }}</td>
+                    <td>
+                      <div class="d-grid gap-2 mx-auto">
+                      <form action="{% url 'delete' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{ d.id }}">
+                        <input type="submit" value="Delete" class="btn btn-warning">
+                      </form>
+                    </td>
+                    <td>
+                      <a class="btn btn-info" href="{% url 'update' d.id %}">Edit</a>
+                        
+                
+                    </td></div>
+                  
+                               
+                  </tr>
+                {% endfor %}
+                </tbody>
+              
+            </table>
+        </div>
+    </div>
+</section>
+<div class="row offset-10">
+    <div class="row">
+        <h3><a href="{% url 'add-student' %}" class="btn btn-primary" >Add Student Data</a></h3>
+    </div>
+</div>
+{% endblock content %}

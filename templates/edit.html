@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}UPDATE{% endblock title %}
+
+
+{% block content %}
+
+<section class="container">
+    <div class="row mt-1">
+        <div class="col-sm-5 d-inline p-3 mb-2 bg-danger text-white offset-3 text-center ">
+            <h3>CRUD Operation</h3></div>
+        </section>       
+<section class="container">
+    <div class="row mt-1">
+        <div class="col-sm-5 d-inline p-3 mb-2 bg-success text-dark offset-3">
+        
+            <form  method="post">  
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Update" class="'btn btn-danger offset-3">
+                <a href="{% url 'home' %}" class="btn btn-primary" class="col-md-4 text-center offset-2 mt-3" >Home Page</a>
+            </form>
+
+    </div>
+</div>
+
+    
+
+</section>
+    
+ 
+    
+{% endblock content %}
